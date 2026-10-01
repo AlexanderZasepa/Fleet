@@ -34,9 +34,29 @@ public class FleetManager {
         }
 
 
+    public boolean addVehicle(Vehicle vehicle) {
+        if (vehicle == null) {
+            return false;
+        }
 
+        // If the vehicle already exists (search returns non-null), refuse to add
+        if (findVehicleByRegNumber(vehicle.getRegNumber()) != null) {
+            return false;
+        }
 
+        return vehicles.add(vehicle);
+    }
 
+    public boolean removeVehicle(String regNumber) {
+
+        Vehicle vehicleToRemove = findVehicleByRegNumber(regNumber);
+
+        if (vehicleToRemove != null) {
+            return vehicles.remove(vehicleToRemove);
+        }
+
+        return false; //Car doesn't exist
+        }
 
 
 }
