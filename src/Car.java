@@ -1,4 +1,4 @@
-public class Car extends Vehicle implements Rentable, Insurance{
+public class Car extends Vehicle {
 
     private int modelYear;
     private int pricePerKm;
@@ -20,12 +20,12 @@ public class Car extends Vehicle implements Rentable, Insurance{
         return 50*days;
     }
     @Override
-    public void describe(){
-        System.out.println("Register number: "+ getRegNumber() + " | Brand : "+ getBrand()
-                + " | Price per day: "+ getBasePricePerDay()
-                + " Price per km: " + pricePerKm
-                + " | Model year is: " + modelYear);
+    public String describe(){       //Returns description from the superclass vehicle
+        return super.describe()     // + subclass specific attributes (modelYear), (pricePerKm)
+                    + " | Price per km: " + pricePerKm
+                    + " | Model year is: " + modelYear;
+        }
     }
 
 
-}
+

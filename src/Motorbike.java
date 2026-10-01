@@ -1,4 +1,4 @@
-public class Motorbike extends Vehicle implements Rentable{
+public class Motorbike extends Vehicle  {
 
     private boolean driverLicense;
 
@@ -9,14 +9,18 @@ public class Motorbike extends Vehicle implements Rentable{
 
     }
     @Override
-    public void describe() {
-        System.out.println("Register number: " + getRegNumber() + " | Brand : " + getBrand()
-                + " | Price per day: " + getBasePricePerDay()
-                + " | Driver license: " + driverLicense);
+    public String describe() {    //Returns description from the superclass vehicle.
+        return super.describe()   // + subclass specific attribute (driveLicense).
+                + " | Driver license: " + driverLicense;
     }
 
     @Override
     public double calculateRentalPrice(int days) {
         return getBasePricePerDay()*days;
+    }
+
+    @Override
+    public double calculateInsurancePrice(int days) {
+        return 0;
     }
 }

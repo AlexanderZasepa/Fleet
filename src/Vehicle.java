@@ -1,4 +1,4 @@
-public abstract class Vehicle {
+public abstract class Vehicle implements Rentable, Insurance {   //Implements rentable & Insurance
 
     private String regNumber;
     private String brand;
@@ -25,8 +25,8 @@ public abstract class Vehicle {
     }
 
 
-    public void describe() {
-        System.out.println("Register number: " + regNumber + " | Brand : " + brand + " Price per day: " + basePricePerDay);
+    public String describe() {
+        return "Register number: " + regNumber + " | Brand : " + brand + " Price per day: " + basePricePerDay;
 
     }
 }

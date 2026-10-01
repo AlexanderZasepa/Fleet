@@ -1,6 +1,7 @@
 ## Project idea
 
-Rental Fleet System. A system that rents and manages different kind of vehicles. 
+Rental Fleet System. A system that rents and manages different kind of vehicles.
+Students: Alexander Zasepa & Emin Almaatooq.
 
 ## Superclass
 
