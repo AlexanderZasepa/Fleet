@@ -1,6 +1,6 @@
 public class Motorbike extends Vehicle implements Rentable{
 
-    boolean driverLicense;
+    private boolean driverLicense;
 
     public Motorbike(String regNumber, String brand, double basePricePerDay, boolean driverLicense) {
         super(regNumber, brand, basePricePerDay);

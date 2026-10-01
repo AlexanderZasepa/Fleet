@@ -1,6 +1,6 @@
 public class Truck extends Vehicle implements Rentable{
 
-    double maxLoadTon;
+    private double maxLoadTon;
 
     public Truck(String regNumber, String brand, double basePricePerDay, double maxLoadTon) {
         super(regNumber, brand, basePricePerDay);

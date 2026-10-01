@@ -1,6 +1,6 @@
 public class Boat extends Vehicle implements Rentable{
 
-    double cleaningPrice;
+    private double cleaningPrice;
 
     public Boat(String regNumber, String brand, double basePricePerDay, double cleaningPrice) {
         super(regNumber, brand, basePricePerDay);
