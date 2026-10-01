@@ -4,12 +4,29 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
     private String brand;
     private double basePricePerDay;
 
+
+
     public Vehicle(String regNumber, String brand, double basePricePerDay) {
+
+        // Checks that the registration number, brand and daily price are valid before creating the vehicle.
+
+        if (regNumber == null || regNumber.isEmpty())
+            throw new IllegalArgumentException("Registration number cannot be null or empty");
+
+        if (brand == null || brand.isEmpty())
+            throw new IllegalArgumentException("Brand cannot be null or empty");
+
+        if (basePricePerDay <= 0)
+            throw new IllegalArgumentException("Base price per day must be positive");
+
         this.regNumber = regNumber;
         this.brand = brand;
         this.basePricePerDay = basePricePerDay;
-    }
 
+
+
+    }
+//Getters
     public String getRegNumber() {
         return regNumber;
     }
@@ -24,7 +41,7 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
         return basePricePerDay;
     }
 
-
+//Calling the constructor
     public String describe() {
         return "Register number: " + regNumber + " | Brand : " + brand + " Price per day: " + basePricePerDay;
 
