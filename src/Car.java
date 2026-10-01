@@ -4,11 +4,12 @@ public class Car extends Vehicle {
     private int pricePerKm;
 
 
-    public Car(String regNumber, String brand, double basePricePerDay, int modelYear, int pricePerKm) {
+    public Car(String regNumber, String brand, double basePricePerDay, int modelYear) {
         super(regNumber, brand, basePricePerDay);
         this.modelYear = modelYear;
         this.pricePerKm = pricePerKm;
     }
+
 
     @Override
     public double calculateRentalPrice(int days) {
@@ -17,7 +18,7 @@ public class Car extends Vehicle {
 
     @Override
     public double calculateInsurancePrice(int days) {
-        return 50*days;
+        return 100*days;
     }
     @Override
     public String describe(){       //Returns description from the superclass vehicle

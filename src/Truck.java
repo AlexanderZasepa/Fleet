@@ -20,6 +20,6 @@ public class Truck extends Vehicle {
 
     @Override
     public double calculateInsurancePrice(int days) {
-        return 0;
+        return 150*days;
     }
 }
