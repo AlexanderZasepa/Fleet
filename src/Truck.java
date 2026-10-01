@@ -1,4 +1,4 @@
-public class Truck extends Vehicle implements Rentable{
+public class Truck extends Vehicle {
 
     private double maxLoadTon;
 
@@ -13,9 +13,13 @@ public class Truck extends Vehicle implements Rentable{
     }
 
     @Override
-    public void describe() {
-        System.out.println("Register number: " + getRegNumber() + " | Brand : " + getBrand()
-                + " | Price per day: " + getBasePricePerDay()
-                + " | Max load:" + maxLoadTon+ " ton");
+    public String describe() {     //Returns description from the superclass vehicle.
+        return super.describe()    // + subclass specific attribute (maxLoadTon).
+                + " | Max load:" + maxLoadTon+ " ton";
+    }
+
+    @Override
+    public double calculateInsurancePrice(int days) {
+        return 0;
     }
 }
