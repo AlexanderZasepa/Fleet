@@ -10,13 +10,15 @@ public class FleetManager {
             seedData();
         }
 
+    public ArrayList<Vehicle> getVehicles() {
+        return vehicles;
+    }
 
-
-        private void seedData() {
-            vehicles.add(new Car("ABC123", "Volvo", 500, 2020));
+    private void seedData() {
+            vehicles.add(new Car("ABC123", "Volvo", 500, 2020,2));
             vehicles.add(new Truck("TRK999", "Scania", 1200, 15.0));
-            vehicles.add(new Boat("BOAT01", "Buster", 800, 300));
-            vehicles.add(new Motorbike("MC777", "Yamaha", 400, true));
+            vehicles.add(new Boat("BOAT01", "Buster", 800, 300, 9));
+            vehicles.add(new Motorbike("MC777", "Yamaha", 400, true, 325));
         }
 
         // Find a vehicle by its registration number
