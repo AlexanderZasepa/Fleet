@@ -2,8 +2,8 @@ public class Truck extends Vehicle {
 
     private double maxLoadTon;
 
-    public Truck(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, double maxLoadTon) {
-        super(regNumber, brand, basePricePerDay, insurancePricePerDay);
+    public Truck(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, double maxLoadTon, boolean isRented) {
+        super(regNumber, brand, basePricePerDay, insurancePricePerDay, isRented);
         this.maxLoadTon = maxLoadTon;
     }
 

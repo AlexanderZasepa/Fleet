@@ -4,11 +4,12 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
     private String brand;
     private double basePricePerDay;
     private double insurancePricePerDay;
+    private boolean isRented;
 
 
 
 
-    public Vehicle(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay) {
+    public Vehicle(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, boolean isRented) {
 
         // Checks that the registration number, brand and daily price are valid before creating the vehicle.
 
@@ -25,9 +26,7 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
         this.brand = brand;
         this.basePricePerDay = basePricePerDay;
         this.insurancePricePerDay = insurancePricePerDay;
-
-
-
+        this.isRented = isRented;
     }
 //Getters
     public String getRegNumber() {
@@ -46,6 +45,10 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
 
     public double getInsurancePricePerDay() {
         return insurancePricePerDay;
+    }
+
+    public boolean isRented() {
+        return isRented;
     }
 
     //Calling the constructor
