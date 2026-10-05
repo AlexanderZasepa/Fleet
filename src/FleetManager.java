@@ -7,18 +7,21 @@ public class FleetManager {
         // Constructor: initializes the collection and adds seed data
         public FleetManager() {
             this.vehicles = new ArrayList<>();
-            seedData();
+            listOfVehicles();
         }
+
 
     public ArrayList<Vehicle> getVehicles() {
         return vehicles;
     }
 
-    private void seedData() {
-            vehicles.add(new Car("ABC123", "Volvo", 500, 2020,2));
+
+
+        private void listOfVehicles() {
+            vehicles.add(new Car("ABC123", "Volvo", 500, 2020, 2));
             vehicles.add(new Truck("TRK999", "Scania", 1200, 15.0));
-            vehicles.add(new Boat("BOAT01", "Buster", 800, 300, 9));
-            vehicles.add(new Motorbike("MC777", "Yamaha", 400, true, 325));
+            vehicles.add(new Boat("BOAT01", "Buster", 800, 300, 2));
+            vehicles.add(new Motorbike("MC777", "Yamaha", 400, true, 23));
         }
 
         // Find a vehicle by its registration number
