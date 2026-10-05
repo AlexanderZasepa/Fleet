@@ -4,12 +4,11 @@ public class Car extends Vehicle {
     private int pricePerKm;
 
 
-    public Car(String regNumber, String brand, double basePricePerDay, int modelYear) {
+    public Car(String regNumber, String brand, double basePricePerDay, int modelYear, int pricePerKm) {
         super(regNumber, brand, basePricePerDay);
         this.modelYear = modelYear;
         this.pricePerKm = pricePerKm;
     }
-
 
     @Override
     public double calculateRentalPrice(int days) {

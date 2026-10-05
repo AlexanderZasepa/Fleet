@@ -3,7 +3,7 @@ public class Boat extends Vehicle{
     private double cleaningPrice;
     private int boatLength;
 
-    public Boat(String regNumber, String brand, double basePricePerDay, double cleaningPrice) {
+    public Boat(String regNumber, String brand, double basePricePerDay, double cleaningPrice, int boatLength) {
         super(regNumber, brand, basePricePerDay);
         this.cleaningPrice = cleaningPrice;
         this.boatLength = boatLength;

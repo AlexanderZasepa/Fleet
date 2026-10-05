@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        FleetUi.startMenu();
+        FleetUi.startMenu(new FleetManager());
 
 
 
