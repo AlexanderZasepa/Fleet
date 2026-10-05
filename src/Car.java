@@ -17,7 +17,7 @@ public class Car extends Vehicle {
 
     @Override
     public double calculateInsurancePrice(int days) {
-        return 50*days;
+        return 100*days;
     }
     @Override
     public String describe(){       //Returns description from the superclass vehicle
