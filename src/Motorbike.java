@@ -3,8 +3,8 @@ public class Motorbike extends Vehicle  {
     private boolean driverLicense;
     private int engineCC;
 
-    public Motorbike(String regNumber, String brand, double basePricePerDay, boolean driverLicense, int engineCC) {
-        super(regNumber, brand, basePricePerDay);
+    public Motorbike(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, boolean driverLicense, int engineCC) {
+        super(regNumber, brand, basePricePerDay, insurancePricePerDay);
         this.driverLicense = driverLicense;
         this.engineCC = engineCC;
     }
@@ -22,6 +22,6 @@ public class Motorbike extends Vehicle  {
 
     @Override
     public double calculateInsurancePrice(int days) {
-        return 50*days;
+        return getInsurancePricePerDay()*days;
     }
 }
