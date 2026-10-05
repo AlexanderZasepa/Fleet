@@ -3,8 +3,8 @@ public class Motorbike extends Vehicle  {
     private boolean driverLicense;
     private int engineCC;
 
-    public Motorbike(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, boolean driverLicense, int engineCC) {
-        super(regNumber, brand, basePricePerDay, insurancePricePerDay);
+    public Motorbike(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, boolean driverLicense, int engineCC, boolean isRented) {
+        super(regNumber, brand, basePricePerDay, insurancePricePerDay, isRented);
         this.driverLicense = driverLicense;
         this.engineCC = engineCC;
     }
