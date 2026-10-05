@@ -18,10 +18,10 @@ public class FleetManager {
 
 
         private void listOfVehicles() {
-            vehicles.add(new Car("ABC123", "Volvo", 500, 2020, 2));
-            vehicles.add(new Truck("TRK999", "Scania", 1200, 15.0));
-            vehicles.add(new Boat("BOAT01", "Buster", 800, 300, 2));
-            vehicles.add(new Motorbike("MC777", "Yamaha", 400, true, 23));
+            vehicles.add(new Car("ABC123", "Volvo", 50, 19.0, 2020, 0.7));
+            vehicles.add(new Truck("TRK999", "Scania", 100, 24.1, 15));
+            vehicles.add(new Boat("BOAT01", "Buster", 300, 70, 30, 8));
+            vehicles.add(new Motorbike("MC777", "Yamaha", 40, 15, true, 325));
         }
 
         // Find a vehicle by its registration number
