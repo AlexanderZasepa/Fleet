@@ -37,7 +37,7 @@ public class FleetUi {
                         System.out.println("There's no vehicles in the fleet!");
                     }else{
                         for (Vehicle v : manager.getVehicles()){
-                            System.out.println(v);
+                            System.out.println(v.describe());
                         }
 
                     }

@@ -2,14 +2,14 @@ public class Truck extends Vehicle {
 
     private double maxLoadTon;
 
-    public Truck(String regNumber, String brand, double basePricePerDay, double maxLoadTon) {
-        super(regNumber, brand, basePricePerDay);
+    public Truck(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, double maxLoadTon) {
+        super(regNumber, brand, basePricePerDay, insurancePricePerDay);
         this.maxLoadTon = maxLoadTon;
     }
 
     @Override
     public double calculateRentalPrice(int days) {
-        return (getBasePricePerDay()*days + (maxLoadTon*100));
+        return getBasePricePerDay()*days;
     }
 
     @Override
@@ -20,6 +20,6 @@ public class Truck extends Vehicle {
 
     @Override
     public double calculateInsurancePrice(int days) {
-        return 150*days;
+        return getInsurancePricePerDay()*days;
     }
 }
