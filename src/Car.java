@@ -4,22 +4,13 @@ public class Car extends Vehicle {
     private double pricePerKm;
 
 
-    public Car(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, int modelYear, double pricePerKm, boolean isRented) {
-        super(regNumber, brand, basePricePerDay, insurancePricePerDay, isRented);
+    public Car(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, int modelYear, double pricePerKm, boolean available) {
+        super(regNumber, brand, basePricePerDay, insurancePricePerDay, available);
         this.modelYear = modelYear;
         this.pricePerKm = pricePerKm;
     }
 
-    @Override
-    public double calculateRentalPrice(int days) {
 
-        if (days <= 0) {
-            throw new IllegalArgumentException("Rental days must be greater than 0.");
-        }
-
-        return getBasePricePerDay()*days;
-
-    }
 
     @Override
     public double calculateInsurancePrice(int days) {
@@ -29,9 +20,9 @@ public class Car extends Vehicle {
 
     @Override
     public String describe(){       //Returns description from the superclass vehicle
-        return super.describe()     // + subclass specific attributes (modelYear), (pricePerKm)
-                    + " | Price per km: " + pricePerKm
-                    + " | Model year is: " + modelYear;
+        return "[CAR] "+ super.describe()      // + subclass specific attributes (modelYear), (pricePerKm)
+                    + " | PRICE/KM: " + pricePerKm
+                    + " | MODEL YEAR: " + modelYear;
         }
     }
 

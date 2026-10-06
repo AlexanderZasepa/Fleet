@@ -102,12 +102,12 @@ public class FleetUi {
                     double totalRentalPrice = foundVehicle.calculateRentalPrice(days);
                     double totalInsurancePrice = foundVehicle.calculateInsurancePrice(days);
 
-                    System.out.printf("Total Cost:  %.2f €", totalRentalPrice + totalInsurancePrice);
+                    System.out.printf("Total Cost:  %.2f €\n", totalRentalPrice + totalInsurancePrice);
 
                     break;
                 }
         }
 
-        scanner.close(); // Stängs säkert HÄR, när loopen är klar!
+        scanner.close();
     }
 }

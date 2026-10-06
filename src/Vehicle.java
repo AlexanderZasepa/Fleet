@@ -4,12 +4,12 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
     private String brand;
     private double basePricePerDay;
     private double insurancePricePerDay;
-    private boolean isRented;
+    private boolean available;
 
 
 
 
-    public Vehicle(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, boolean isRented) {
+    public Vehicle(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, boolean available) {
 
         // Checks that the registration number, brand and daily price are valid before creating the vehicle.
 
@@ -26,7 +26,7 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
         this.brand = brand;
         this.basePricePerDay = basePricePerDay;
         this.insurancePricePerDay = insurancePricePerDay;
-        this.isRented = isRented;
+        this.available = available;
     }
 //Getters
     public String getRegNumber() {
@@ -47,15 +47,39 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
         return insurancePricePerDay;
     }
 
-    public boolean isRented() {
-        return isRented;
+    public boolean isAvailable() {
+        return available;
     }
+    //Returns "Available" if private field available is true else returns "Rented"
+    public String getStatus(){
+        if (available) {
+            return "Available";
+        }else{
+            return "Rented";
+        }
+    }
+
+    @Override
+    public double calculateRentalPrice(int days) {
+
+        if (days <= 0) {
+            throw new IllegalArgumentException("Rental days must be greater than 0.");
+        }
+
+        return basePricePerDay*days;
+
+    }
+
+
 
     //Calling the constructor
     public String describe() {
-        return "Register number: " + regNumber + " | Brand : " + brand + " Price per day: " + basePricePerDay;
+        return "REG: " + regNumber + " | BRAND: " + brand + " | PRICE/DAY: €" + basePricePerDay
+                + " | INSURANCE/DAY: €" + insurancePricePerDay + " | STATUS: " + getStatus();
 
     }
+
+
 }
 
 
