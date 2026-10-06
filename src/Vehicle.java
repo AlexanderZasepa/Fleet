@@ -7,8 +7,6 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
     private boolean available;
 
 
-
-
     public Vehicle(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, boolean available) {
 
         // Checks that the registration number, brand and daily price are valid before creating the vehicle.
@@ -22,13 +20,17 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
         if (basePricePerDay <= 0)
             throw new IllegalArgumentException("Base price per day must be positive");
 
+        if (insurancePricePerDay <= 0)
+            throw new IllegalArgumentException("Insurance price must be positive");
+
         this.regNumber = regNumber;
         this.brand = brand;
         this.basePricePerDay = basePricePerDay;
         this.insurancePricePerDay = insurancePricePerDay;
         this.available = available;
     }
-//Getters
+
+    //Getters
     public String getRegNumber() {
         return regNumber;
     }
@@ -50,11 +52,12 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
     public boolean isAvailable() {
         return available;
     }
+
     //Returns "Available" if private field available is true else returns "Rented"
-    public String getStatus(){
+    public String getStatus() {
         if (available) {
             return "Available";
-        }else{
+        } else {
             return "Rented";
         }
     }
@@ -66,10 +69,16 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
             throw new IllegalArgumentException("Rental days must be greater than 0.");
         }
 
-        return basePricePerDay*days;
+        return basePricePerDay * days;
 
     }
-
+    public double calculateTotalCost(int days, boolean includeInsurance){
+        double total = calculateRentalPrice(days);
+        if (includeInsurance){
+            total += calculateInsurancePrice(days);
+        }
+        return total;
+    }
 
 
     //Calling the constructor
