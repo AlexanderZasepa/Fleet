@@ -94,18 +94,32 @@ public class FleetUi {
                             System.out.println("Invalid input. Please enter a number.");
                         }
                     }
+                    boolean includeInsurance = false;
+                    while (true) {
+                        System.out.println("Do you want to include insurance for this vehicle? Yes/No: ");
+                        String insuranceInput = scanner.nextLine().trim().toLowerCase();
+
+                        if (insuranceInput.equals("yes")) {
+                            includeInsurance = true;
+                            break;
+                        } else if (insuranceInput.equals("no")) {
+                            includeInsurance = false;
+                            break;
+                        } else {
+                            System.out.println("Invalid input! Please enter: Yes or No.");
+                        }
+                    }
+                    double totalCost = foundVehicle.calculateTotalCost(days, includeInsurance);
+
 
                     System.out.println("\n--- TOTAL RENTAL COST ---");
                     System.out.println("Vehicle: " + foundVehicle.getBrand() + " (" + foundVehicle.getRegNumber() + ")");
                     System.out.println("Days: " + days);
-
-                    double totalRentalPrice = foundVehicle.calculateRentalPrice(days);
-                    double totalInsurancePrice = foundVehicle.calculateInsurancePrice(days);
-
-                    System.out.printf("Total Cost:  %.2f €\n", totalRentalPrice + totalInsurancePrice);
+                    System.out.println("Insurance included: " + (includeInsurance ? "Yes" : "No"));
+                    System.out.printf("Total Cost:  %.2f €\n", totalCost);
 
                     break;
-                }
+            }
         }
 
         scanner.close();
