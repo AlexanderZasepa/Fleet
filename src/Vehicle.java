@@ -83,11 +83,14 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
 
     //Calling the constructor
     public String describe() {
-        return "REG: " + regNumber + " | BRAND: " + brand + " | PRICE/DAY: €" + basePricePerDay
-                + " | INSURANCE/DAY: €" + insurancePricePerDay + " | STATUS: " + getStatus();
-
+        return String.format("[%s] | Reg: %-6s | Brand: %-8s | Price/Day: %6.2f € | Insurance: %5.2f € | Status: %s",
+                getClass().getSimpleName().toUpperCase(),
+                regNumber,
+                brand,
+                basePricePerDay,
+                insurancePricePerDay,
+                getStatus());
     }
-
 
 }
 

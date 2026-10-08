@@ -10,9 +10,8 @@ public class Motorbike extends Vehicle  {
     }
 
     @Override
-    public String describe() {    //Returns description from the superclass vehicle.
-        return "[MC] "+ super.describe()   // + subclass specific attribute (driveLicense).
-                + " | DRIVER LICENSE: " + driverLicense + " | ENGINE: " + engineCC +"cc";
+    public String describe() {
+        return super.describe() + " | DRIVER LICENSE: " + driverLicense + " | ENGINE: " + engineCC + "cc";
     }
 
 
