@@ -26,12 +26,11 @@ public class Car extends Vehicle {
 
 
     @Override
-    public String describe(){       //Returns description from the superclass vehicle
-        return "[CAR] "+ super.describe()      // + subclass specific attributes (modelYear), (pricePerKm)
-                    + " | PRICE/KM: " + pricePerKm
-                    + " | MODEL YEAR: " + modelYear;
-        }
+    public String describe() {
+        return super.describe() + " | PRICE/KM: " + pricePerKm + " | MODEL YEAR: " + modelYear;
     }
+
+}
 
 
 
