@@ -10,9 +10,8 @@ public class Truck extends Vehicle {
 
 
     @Override
-    public String describe() {     //Returns description from the superclass vehicle.
-        return "[TRUCK] "+super.describe()    // + subclass specific attribute (maxLoadTon).
-                + " | MAX LOAD: " + maxLoadTon+ " ton";
+    public String describe() {
+        return super.describe() + " | MAX LOAD: " + maxLoadTon + " ton";
     }
 
     @Override

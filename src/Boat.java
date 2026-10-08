@@ -22,8 +22,7 @@ public class Boat extends Vehicle{
 
 
     @Override
-    public String describe() {      //Returns description from the superclass vehicle.
-        return "[BOAT] "+ super.describe()     // + subclass specific attribute (cleaningPrice).
-                + " | CLEANING FEE: " + cleaningPrice + " | LENGTH: " + boatLength + "m";
+    public String describe() {
+        return super.describe() + " | CLEANING FEE: " + cleaningPrice + " € | LENGTH: " + boatLength + "m";
     }
 }
