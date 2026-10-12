@@ -7,6 +7,12 @@ public class Boat extends Vehicle{
         super(regNumber, brand, basePricePerDay, insurancePricePerDay, available);
         this.cleaningPrice = cleaningPrice;
         this.boatLength = boatLength;
+
+        if (cleaningPrice <=0 )
+            throw new IllegalArgumentException("Cleaning-price must be positive.");
+
+        if (boatLength <1 || boatLength >25)
+            throw new IllegalArgumentException("Boat-length must be between 1-25m.");
     }
 
     @Override
