@@ -62,19 +62,16 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
         }
     }
 
-    @Override
+
     public double calculateRentalPrice(int days) {
-
-        if (days <= 0) {
-            throw new IllegalArgumentException("Rental days must be greater than 0.");
-        }
-
         return basePricePerDay * days;
 
+
     }
-    public double calculateTotalCost(int days, boolean includeInsurance){
+
+    public double calculateTotalCost(int days, boolean includeInsurance) {
         double total = calculateRentalPrice(days);
-        if (includeInsurance){
+        if (includeInsurance) {
             total += calculateInsurancePrice(days);
         }
         return total;
