@@ -69,6 +69,10 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
 
     }
 
+    public double calculateInsurancePrice(int days){
+        return insurancePricePerDay * days;
+    }
+
     public double calculateTotalCost(int days, boolean includeInsurance) {
         double total = calculateRentalPrice(days);
         if (includeInsurance) {
