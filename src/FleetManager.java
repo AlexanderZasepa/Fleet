@@ -17,7 +17,7 @@ public class FleetManager {
 
 
     private void listOfVehicles() {
-        vehicles.add(new Car("ABC123", "Volvo", 50, 6.9, 2020, 0.4, true));
+        vehicles.add(new Car("ABC123", "Volvo", 50, 6.9, 2020, 0, true));
         vehicles.add(new Car("CLN257", "Mercedes", 70, 8.4, 2024, 0.4, false));
         vehicles.add(new Car("BOB040", "Porsche", 170, 12.5, 2025, 0.4, true));
         vehicles.add(new Car("WQR690", "Ferrari", 250, 14.9, 2022, 0.6, true));
