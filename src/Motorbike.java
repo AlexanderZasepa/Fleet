@@ -8,8 +8,9 @@ public class Motorbike extends Vehicle  {
         this.driverLicense = driverLicense;
         this.engineCC = engineCC;
 
-        if (engineCC <200 || engineCC >1200)
+        if (engineCC <200 || engineCC >1200) {
             throw new IllegalArgumentException("Motorbike Engine-CC must be between 200-1200.");
+        }
     }
 
     @Override
@@ -21,6 +22,7 @@ public class Motorbike extends Vehicle  {
 
     @Override
     public double calculateInsurancePrice(int days) {
-        return getInsurancePricePerDay()*days;
+        // Motorbikes have a 15% risk surcharge on insurance.
+        return (getInsurancePricePerDay() * days) * 1.15;
     }
-}
+    }

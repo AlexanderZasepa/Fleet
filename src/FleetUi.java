@@ -104,12 +104,14 @@ public class FleetUi {
 
         if (regNumber.isEmpty()) {
             System.out.println("Invalid input. Registration number cannot be empty.");
+            return;
         }
 
         Vehicle foundVehicle = manager.findVehicleByRegNumber(regNumber);
 
         if (foundVehicle == null) {
             System.out.println("Error: Vehicle not found.");
+            return;
         }
         int days = 0;
         while (true) {
@@ -153,7 +155,6 @@ public class FleetUi {
     private static void addNewVehicle(Scanner scanner, FleetManager manager) {
         System.out.println("\n----- ADD NEW VEHICLE -----");
 
-        try {
             System.out.println("Enter username: ");
             String user = scanner.nextLine();
             System.out.println("Enter password: ");
@@ -166,13 +167,6 @@ public class FleetUi {
                 System.out.println("Access denied!");
                 return;
             }
-
-        } catch (NumberFormatException e) {
-            System.out.println("\n Invalid choice!\n");
-
-        } catch (IllegalArgumentException e) {
-            System.out.println("Invalid input! \n");
-        }
 
 
         int type = 0;
@@ -275,7 +269,6 @@ public class FleetUi {
     private static void removeAnyVehicle(Scanner scanner, FleetManager manager) {
         System.out.println("\n----- REMOVE VEHICLE -----");
 
-        try {
             System.out.println("Enter username: ");
             String user = scanner.nextLine();
             System.out.println("Enter password: ");
@@ -289,13 +282,6 @@ public class FleetUi {
                 return;
             }
 
-        } catch (NumberFormatException e) {
-            System.out.println("\n Invalid choice!\n");
-
-        } catch (IllegalArgumentException e) {
-            System.out.println("Invalid input! \n");
-
-        }
         try {
             while (true) {
                 System.out.println("Enter registration number to remove (e.g ABC123 or '0' to cancel: ");
