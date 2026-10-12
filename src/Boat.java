@@ -23,7 +23,12 @@ public class Boat extends Vehicle{
 
     @Override
     public double calculateInsurancePrice(int days) {
-        return getInsurancePricePerDay()*days;
+        if (boatLength > 15) {
+            return getInsurancePricePerDay() * days + 25;
+        }else {
+            return getInsurancePricePerDay() * days;
+        }
+
     }
 
 
