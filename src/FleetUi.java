@@ -49,11 +49,18 @@ public class FleetUi {
                     break;
 
                 case 5:
+                    removeAnyVehicle(scanner, manager);
+
 
                     break;
 
                 case 6:
+                    System.out.println("\n-----Exiting the system!-----");
+                    running = false;
                     break;
+
+                default:
+                    System.out.println("Invalid choice! Please select an option (1-6): ");
             }
         }
 
@@ -145,6 +152,27 @@ public class FleetUi {
 
     private static void addNewVehicle(Scanner scanner, FleetManager manager) {
         System.out.println("\n----- ADD NEW VEHICLE -----");
+
+        try {
+            System.out.println("Enter username: ");
+            String user = scanner.nextLine();
+            System.out.println("Enter password: ");
+            String pwd = scanner.nextLine();
+
+            if (user.equals("Admin") && pwd.equals("123")) {
+                System.out.println("\n----- YOU ARE LOGGED IN! -----\n");
+
+            } else {
+                System.out.println("Access denied!");
+                return;
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("\n Invalid choice!\n");
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid input! \n");
+        }
 
 
         int type = 0;
@@ -243,5 +271,65 @@ public class FleetUi {
             System.out.println("Validation Error: " + e.getMessage());
         }
     }
+
+    private static void removeAnyVehicle(Scanner scanner, FleetManager manager) {
+        System.out.println("\n----- REMOVE VEHICLE -----");
+
+        try {
+            System.out.println("Enter username: ");
+            String user = scanner.nextLine();
+            System.out.println("Enter password: ");
+            String pwd = scanner.nextLine();
+
+            if (user.equals("Admin") && pwd.equals("123")) {
+                System.out.println("\n----- YOU ARE LOGGED IN! -----\n");
+
+            } else {
+                System.out.println("Access denied!");
+                return;
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("\n Invalid choice!\n");
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid input! \n");
+
+        }
+        try {
+            while (true) {
+                System.out.println("Enter registration number to remove (e.g ABC123 or '0' to cancel: ");
+                String reg = scanner.nextLine().trim().toUpperCase();
+
+                if (reg.equals("0")) {
+                    System.out.println("Operation cancelled ");
+                    return;
+                }
+                if (!reg.matches("[A-Z]{3}[0-9]{3}$")) {
+                    System.out.println("Invalid format! Registration number must be 3 letters followed by 3 numbers. \n");
+                    continue;
+                }
+                boolean remove = manager.removeVehicle(reg);
+
+                if (remove) {
+                    System.out.println("Vehicle with registration number: " + reg + " was successfully removed! ");
+                    break;
+                } else {
+                    System.out.println("Error: No vehicle found with registration number " + reg + ". Please try again!\n");
+                }
+
+
+            }
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Input error: Please enter valid registration number!");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Validation error: " + e.getMessage());
+
+        }
+    }
+
+
 }
 
