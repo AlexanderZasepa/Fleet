@@ -7,6 +7,9 @@ public class Motorbike extends Vehicle  {
         super(regNumber, brand, basePricePerDay, insurancePricePerDay, available);
         this.driverLicense = driverLicense;
         this.engineCC = engineCC;
+
+        if (engineCC <200 || engineCC >1200)
+            throw new IllegalArgumentException("Motorbike Engine-CC must be between 200-1200.");
     }
 
     @Override
