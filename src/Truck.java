@@ -6,11 +6,12 @@ public class Truck extends Vehicle {
         super(regNumber, brand, basePricePerDay, insurancePricePerDay, available);
         this.maxLoadTon = maxLoadTon;
 
-        if (maxLoadTon <0 || maxLoadTon >30)
-            throw new IllegalArgumentException("MaxLoadTon must between 0-30.");
+        if (maxLoadTon < 0 || maxLoadTon > 30) {
+            throw new IllegalArgumentException("MaxLoadTon must be between 0-30.");
+        }
+
+
     }
-
-
 
     @Override
     public String describe() {
@@ -18,10 +19,13 @@ public class Truck extends Vehicle {
     }
 
     @Override
-    public double calculateInsurancePrice(int days) {
-        return getInsurancePricePerDay()*days;
+    public double calculateRentalPrice(int days) {
+        // Trucks cost an extra €10 per ton of load capacity per day.
+        return getBasePricePerDay() * days + (maxLoadTon * 10 * days);
     }
 
-
-
+    @Override
+    public double calculateInsurancePrice(int days) {
+        return getInsurancePricePerDay() * days;
+    }
 }
