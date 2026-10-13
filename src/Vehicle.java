@@ -9,7 +9,7 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
 
     public Vehicle(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, boolean available) {
 
-        // Checks that the registration number, brand and daily price are valid before creating the vehicle.
+        // Checks that the registration number, brand, daily price and insurance price are valid before creating the vehicle.
 
         if (regNumber == null || regNumber.isEmpty())
             throw new IllegalArgumentException("Registration number cannot be null or empty");

@@ -24,8 +24,6 @@ public class Truck extends Vehicle {
         return getBasePricePerDay() * days + (maxLoadTon * 10 * days);
     }
 
-    @Override
-    public double calculateInsurancePrice(int days) {
-        return getInsurancePricePerDay() * days;
-    }
+
+
 }
