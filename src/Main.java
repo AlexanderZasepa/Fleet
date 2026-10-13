@@ -4,8 +4,6 @@ public class Main {
         FleetUi.startMenu(new FleetManager());
 
 
-
-
     }
 
 }

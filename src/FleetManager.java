@@ -10,12 +10,12 @@ public class FleetManager {
         listOfVehicles();
     }
 
-
+    // returns the list of vehicles
     public ArrayList<Vehicle> getVehicles() {
         return vehicles;
     }
 
-
+    //Arraylist holding seed-data with polymorphism
     private void listOfVehicles() {
         vehicles.add(new Car("ABC123", "Volvo", 50, 6.9, 2020, 0, true));
         vehicles.add(new Car("CLN257", "Mercedes", 70, 8.4, 2024, 0.4, false));
@@ -33,12 +33,12 @@ public class FleetManager {
 
     }
 
-    // Find a vehicle by its registration number
+    // Find a vehicle by its registration number to make sure it doesnt crash if null
     public Vehicle findVehicleByRegNumber(String regNumber) {
         if (regNumber == null)
             return null;
 
-
+        //Loops the arraylist vehicle and ignores small & uppercase, trims(removes spaces) & redo to uppercase.
         for (Vehicle vehicle : vehicles) {
             if (vehicle.getRegNumber().equalsIgnoreCase(regNumber.trim().toUpperCase())) {
                 return vehicle;
@@ -47,21 +47,20 @@ public class FleetManager {
         return null;
     }
 
-
+    //Blocks the method by not adding a new vehicle if null.
     public boolean addVehicle(Vehicle vehicle) {
         if (vehicle == null) {
             return false;
         }
 
-        // If the vehicle already exists (search returns non-null), refuse to add
-        if
-        (findVehicleByRegNumber(vehicle.getRegNumber()) != null) {
+        // If vehicle doesnt exist it adds a new vehicle else returns false.
+        if (findVehicleByRegNumber(vehicle.getRegNumber()) == null) {
+            return vehicles.add(vehicle);
+        } else {
             return false;
         }
-
-        return vehicles.add(vehicle);
     }
-
+    // if vehicle exists it removes the vehicle from the list. Else returns false.
     public boolean removeVehicle(String regNumber) {
 
         Vehicle vehicleToRemove = findVehicleByRegNumber(regNumber);

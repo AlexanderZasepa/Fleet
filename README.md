@@ -54,6 +54,16 @@ Students: Alexander Zasepa & Emin Almaatooq.
 4. Missing Entity Guarding: Looking up or calculating costs for non-existent registration numbers is safely handled with null checks and early returns, preventing NullPointerException runtime errors.
 
 ## Motivation (Later this week)
+Motivation
+
+Our motivation for this project was to build a stable, crash-free Fleet Rental System with a simple user interface. We prioritized clean, self-documenting code that is easy to navigate and simple to build upon.
+
+
+1. A polymorphic class hierarchy with a superclass and sub-classes, complemented by functional interfaces.
+
+2. A dedicated FleetManager that safely manages the ArrayList and business logic to prevent runtime exceptions.
+
+3. A FleetUI layer built around a modular switch-menu with reusable methods for a seamless user experience.
 
 ---
 
