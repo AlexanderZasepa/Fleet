@@ -16,6 +16,7 @@ public class FleetManager {
     }
 
     //Arraylist holding seed-data with polymorphism
+    //Here we store all the different vehicles in the same list through the superclass.
     private void listOfVehicles() {
         vehicles.add(new Car("ABC123", "Volvo", 50, 6.9, 2020, 0, true));
         vehicles.add(new Car("CLN257", "Mercedes", 70, 8.4, 2024, 0.4, false));
@@ -53,7 +54,7 @@ public class FleetManager {
             return false;
         }
 
-        // If vehicle doesnt exist it adds a new vehicle else returns false.
+        // If vehicle doesnt exist it adds a new vehicle else returns false. ==XX==
         if (findVehicleByRegNumber(vehicle.getRegNumber()) == null) {
             return vehicles.add(vehicle);
         } else {
