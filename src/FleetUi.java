@@ -29,6 +29,7 @@ public class FleetUi {
             }
 
 
+            // A menu switch with our cases which includes our methods.
             switch (choice) {
 
                 case 1:
@@ -50,8 +51,6 @@ public class FleetUi {
 
                 case 5:
                     removeAnyVehicle(scanner, manager);
-
-
                     break;
 
                 case 6:
@@ -69,6 +68,7 @@ public class FleetUi {
 
     }
 
+    //A method that prints our arraylist and if the arraylist is empty, i will give a error string.
     private static void displayAllVehicles(FleetManager manager) {
         System.out.println("\n====================== FLEET VEHICLES ======================");
         if (manager.getVehicles().isEmpty()) {
@@ -81,10 +81,13 @@ public class FleetUi {
         }
     }
 
+    // A method that searches for a vehicle by registration number and displays an error message if the vehicle is not found.
     private static void searchVehicle(Scanner scanner, FleetManager manager) {
         System.out.println("\n====================== SEARCH VEHICLE ======================");
         System.out.print("Enter registration number: ");
+        // Check if another line of input is available to read
         if (scanner.hasNextLine()) {
+            // Read the user's input and store it in the variable "regSearch"
             String regSearch = scanner.nextLine();
             Vehicle vehicle = manager.findVehicleByRegNumber(regSearch);
             if (vehicle == null) {
@@ -95,25 +98,30 @@ public class FleetUi {
         }
     }
 
+
+    // A method that calculates the total rental cost of a vehicle
     private static void calculateTotalCost(Scanner scanner, FleetManager manager) {
         System.out.println("\n----- CALCULATE TOTAL COST -----");
 
 
         System.out.print("Enter Vehicle registration Number: ");
-        String regNumber = scanner.nextLine().trim();
+        String regNumber = scanner.nextLine().trim(); // Trims down the input stores in the variable "regNummer"
 
         if (regNumber.isEmpty()) {
             System.out.println("Invalid input. Registration number cannot be empty.");
             return;
         }
 
+        // Search for the vehicle using its registration number.
         Vehicle foundVehicle = manager.findVehicleByRegNumber(regNumber);
 
         if (foundVehicle == null) {
             System.out.println("Error: Vehicle not found.");
             return;
         }
+        // Create variable "days" to store the number of rental day
         int days = 0;
+        // Keep asking the user until valid input is entered
         while (true) {
             System.out.print("Enter number of rental days: ");
             try {
@@ -127,6 +135,7 @@ public class FleetUi {
                 System.out.println("Invalid input. Please enter a number.");
             }
         }
+        //ask the user if they want to inlucde the insurance or not.
         boolean includeInsurance = false;
         while (true) {
             System.out.println("Do you want to include insurance for this vehicle? Yes/No: ");
@@ -142,8 +151,9 @@ public class FleetUi {
                 System.out.println("Invalid input! Please enter: Yes or No.");
             }
         }
-        double totalCost = foundVehicle.calculateTotalCost(days, includeInsurance);
 
+        // Calculates the total rental cost and stores the result in totalCost.
+        double totalCost = foundVehicle.calculateTotalCost(days, includeInsurance);
 
         System.out.println("\n--- TOTAL RENTAL COST ---");
         System.out.println("Vehicle: " + foundVehicle.getBrand() + " (" + foundVehicle.getRegNumber() + ")");
@@ -152,14 +162,18 @@ public class FleetUi {
         System.out.printf("Total Cost:  %.2f €\n", totalCost);
     }
 
+
+    // Adds a new vehicle to the fleet
     private static void addNewVehicle(Scanner scanner, FleetManager manager) {
         System.out.println("\n----- ADD NEW VEHICLE -----");
 
+        //Asking the user for Admin login credentials
             System.out.println("Enter username: ");
             String user = scanner.nextLine();
             System.out.println("Enter password: ");
             String pwd = scanner.nextLine();
 
+            //Controlls if the username is Admin and password is 123 to gain admin access.
             if (user.equals("Admin") && pwd.equals("123")) {
                 System.out.println("\n----- YOU ARE LOGGED IN! -----\n");
 
@@ -168,14 +182,16 @@ public class FleetUi {
                 return;
             }
 
-
+            // Create a variable to store the selected vehicle type
         int type = 0;
+
         while (true) {
             System.out.println("Select vehicle type:");
             System.out.println("1. Car\n2. Truck\n3. Boat\n4. Motorbike");
             System.out.print("Choice (1-4): ");
 
             try {
+                // Read the input and convert it to an integer
                 type = Integer.parseInt(scanner.nextLine().trim());
                 if (type >= 1 && type <= 4) {
                     break;
@@ -192,9 +208,11 @@ public class FleetUi {
             String reg = "";
             while (true) {
                 System.out.print("Reg Number (e.g. ABC123): ");
+                // Read the registration number, remove spaces and convert to uppercase
                 reg = scanner.nextLine().trim().toUpperCase();
 
 
+                // Check that the registration number has 3 letters followed by 3 numbers
                 if (reg.matches("^[A-Z]{3}[0-9]{3}$")) {
                     break;
                 } else {
@@ -206,32 +224,36 @@ public class FleetUi {
             String brand = scanner.nextLine().trim();
 
             System.out.print("Base price per day (€): ");
-            double basePrice = Double.parseDouble(scanner.nextLine().trim());
+            double basePrice = Double.parseDouble(scanner.nextLine().trim()); // convert it to a decimal number
+
 
             System.out.print("Insurance price per day (€): ");
-            double insPrice = Double.parseDouble(scanner.nextLine().trim());
+            double insPrice = Double.parseDouble(scanner.nextLine().trim()); // convert it to a decimal number
 
+            // Create the variable "newVehicle" to store the new information
             Vehicle newVehicle = null;
 
 
+            // Create the correct vehicle based on the selected type
             switch (type) {
-                case 1: // Car
+                case 1: // Create a Car
                     System.out.print("Model Year: ");
                     int year = Integer.parseInt(scanner.nextLine().trim());
                     System.out.print("Price per KM (€): ");
                     double priceKm = Double.parseDouble(scanner.nextLine().trim());
 
+                    // Create a new vehicle using the entered information
                     newVehicle = new Car(reg, brand, basePrice, insPrice, year, priceKm, true);
                     break;
 
-                case 2: // Truck
+                case 2: // Create a Truck
                     System.out.print("Max Load (tons): ");
                     double maxLoad = Double.parseDouble(scanner.nextLine().trim());
 
                     newVehicle = new Truck(reg, brand, basePrice, insPrice, maxLoad, true);
                     break;
 
-                case 3: // Boat
+                case 3: // Create a Boat
                     System.out.print("Cleaning Price (€): ");
                     double cleaning = Double.parseDouble(scanner.nextLine().trim());
                     System.out.print("Boat Length (m): ");
@@ -240,7 +262,7 @@ public class FleetUi {
                     newVehicle = new Boat(reg, brand, basePrice, insPrice, cleaning, length, true);
                     break;
 
-                case 4: // Motorbike
+                case 4: // Create a Motorbike
                     System.out.print("Driver License required (true/false): ");
                     boolean license = Boolean.parseBoolean(scanner.nextLine().trim());
                     System.out.print("Engine CC: ");
@@ -251,8 +273,10 @@ public class FleetUi {
             }
 
 
+            // Try to add the new vehicle to the fleet
             boolean success = manager.addVehicle(newVehicle);
 
+            // Check whether the vehicle was added successfully
             if (success) {
                 System.out.println("Vehicle successfully added!");
             } else {
@@ -266,9 +290,11 @@ public class FleetUi {
         }
     }
 
+    // Removing existing vehicle from the fleet
     private static void removeAnyVehicle(Scanner scanner, FleetManager manager) {
         System.out.println("\n----- REMOVE VEHICLE -----");
 
+        //Asking the user for Admin login credentials
             System.out.println("Enter username: ");
             String user = scanner.nextLine();
             System.out.println("Enter password: ");
@@ -283,20 +309,25 @@ public class FleetUi {
             }
 
         try {
+            // Keep asking until a vehicle is removed or the operation is cancelled
             while (true) {
                 System.out.println("Enter registration number to remove (e.g ABC123 or '0' to cancel: ");
                 String reg = scanner.nextLine().trim().toUpperCase();
 
+                // Cancel the operation if the user enters 0
                 if (reg.equals("0")) {
                     System.out.println("Operation cancelled ");
                     return;
                 }
+                // Check that the registration number has 3 letters followed by 3 numbers
                 if (!reg.matches("[A-Z]{3}[0-9]{3}$")) {
                     System.out.println("Invalid format! Registration number must be 3 letters followed by 3 numbers. \n");
-                    continue;
+                    continue; // Skip the rest of this loop iteration and ask again
                 }
+                // Try to remove the vehicle with the entered registration number
                 boolean remove = manager.removeVehicle(reg);
 
+                // Check whether the vehicle was removed successfully
                 if (remove) {
                     System.out.println("Vehicle with registration number: " + reg + " was successfully removed! ");
                     break;
