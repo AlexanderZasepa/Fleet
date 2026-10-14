@@ -190,8 +190,8 @@ public class FleetUi {
             System.out.print("Choice (1-4): ");
 
             try {
-                // Read the input and convert it to an integer
-                type = Integer.parseInt(scanner.nextLine().trim());
+
+                type = Integer.parseInt(scanner.nextLine().trim()); // Read the input and convert it to an integer
                 if (type >= 1 && type <= 4) {
                     break;
                 } else {
@@ -304,24 +304,25 @@ public class FleetUi {
     private static void removeAnyVehicle(Scanner scanner, FleetManager manager) {
         System.out.println("\n----- REMOVE VEHICLE -----");
 
-        //Asking the user for Admin login credentials
-        System.out.print("Enter username: ");
-        String user = scanner.nextLine();
-        System.out.print("Enter password: ");
-        String pwd = scanner.nextLine();
-
-        //Asking the user for Admin login credentials
-        if (AdminCredentials.AuthManager.authenticate(user, pwd)) {
-            System.out.println("Login successful!");
-
-        } else {
-            System.out.println("Invalid credentials!");
-            return;
-        }
-
         try {
             // Keep asking until a vehicle is removed or the operation is cancelled
             while (true) {
+
+                //Asking the user for Admin login credentials
+                System.out.print("Enter username: ");
+                String user = scanner.nextLine();
+                System.out.print("Enter password: ");
+                String pwd = scanner.nextLine();
+
+                //Asking the user for Admin login credentials
+                if (AdminCredentials.AuthManager.authenticate(user, pwd)) {
+                    System.out.println("Login successful!");
+
+                } else {
+                    System.out.println("Invalid credentials!");
+                    return;
+                }
+
                 System.out.println("Enter registration number to remove (e.g ABC123 or '0' to cancel: ");
                 String reg = scanner.nextLine().trim().toUpperCase();
 
@@ -332,7 +333,7 @@ public class FleetUi {
                 }
                 // Check that the registration number has 3 letters followed by 3 numbers
                 if (Vehicle.isValidRegNumber(reg)) {
-                    break;
+
                 } else {
                     System.out.println("Invalid registration format! Must be 3 letters followed by 3 digits.");
                 }
@@ -345,6 +346,7 @@ public class FleetUi {
                     break;
                 } else {
                     System.out.println("Error: No vehicle found with registration number " + reg + ". Please try again!\n");
+                    return;
                 }
 
 
