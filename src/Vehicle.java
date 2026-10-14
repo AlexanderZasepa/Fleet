@@ -1,5 +1,9 @@
 public abstract class Vehicle implements Rentable, Insurance {   //Implements rentable & Insurance
 
+    //"Vehicle is our abstract superclass containing all shared attributes,
+    // such as registration number, brand, and base price. Car, Truck, Boat, and Motorbike all inherit from this class."
+
+    //instant variable/Fiels, subclass specific.
     private String regNumber;
     private String brand;
     private double basePricePerDay;
@@ -28,6 +32,26 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
         this.basePricePerDay = basePricePerDay;
         this.insurancePricePerDay = insurancePricePerDay;
         this.available = available;
+    }
+
+    public static boolean isValidRegNumber(String regNumber) {
+        if (regNumber == null) {
+            return false;
+        }
+        String cleanReg = regNumber.trim().toUpperCase();
+
+        // Kollar om strängen matchar formatet 3 bokstäver + 3 tecken (t.ex. ABC123 eller ABC12A)
+        return cleanReg.matches("^[A-Z]{3}[0-9]{3}$");
+    }
+
+    public static boolean isValidBrand(String brand) {
+        if (brand == null) {
+            return false;
+        }
+        String cleanBrand = brand.trim();
+
+
+        return cleanBrand.matches("^[a-zA-Z\\s\\-]+$");
     }
 
     //Getters

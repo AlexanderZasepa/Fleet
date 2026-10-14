@@ -11,7 +11,7 @@ public class Boat extends Vehicle{
         if (cleaningPrice <=0 )
             throw new IllegalArgumentException("Cleaning-price must be positive.");
 
-        if (boatLength <1 || boatLength >25)
+        if (boatLength <3 || boatLength >25)
             throw new IllegalArgumentException("Boat-length must be between 1-25m.");
     }
 
