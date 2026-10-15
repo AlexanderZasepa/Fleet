@@ -1,28 +1,33 @@
-public class Motorbike extends Vehicle  {
+public class Motorbike extends Vehicle {
+    //Private fields for subclass Motorbike.
 
     private boolean driverLicense;
     private int engineCC;
 
+    //constructor
     public Motorbike(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, boolean driverLicense, int engineCC, boolean available) {
         super(regNumber, brand, basePricePerDay, insurancePricePerDay, available);
         this.driverLicense = driverLicense;
         this.engineCC = engineCC;
 
-        if (engineCC <200 || engineCC >1200) {
+        //if statements exception. Shutdowns the program if exception is thrown.
+        if (engineCC < 200 || engineCC > 1200) {
             throw new IllegalArgumentException("Motorbike Engine-CC must be between 200-1200.");
         }
     }
+
+    // Overrides describe and adds Motorbike specific fields in the print.
 
     @Override
     public String describe() {
         return super.describe() + " | DRIVER LICENSE: " + driverLicense + " | ENGINE: " + engineCC + "cc";
     }
 
-
+    // Replaced generic base calculation with Motorbike-specific insurance pricing.
 
     @Override
     public double calculateInsurancePrice(int days) {
         // Motorbikes have a 15% risk surcharge on insurance.
         return (getInsurancePricePerDay() * days) * 1.15;
     }
-    }
+}
