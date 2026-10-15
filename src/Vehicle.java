@@ -3,14 +3,14 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
     //"Vehicle is our abstract superclass containing all shared attributes,
     // such as registration number, brand, and base price. Car, Truck, Boat, and Motorbike all inherit from this class."
 
-    //instant variable/Fiels, subclass specific.
+    // Shared instance variable/Fields for all vehicles.
     private String regNumber;
     private String brand;
     private double basePricePerDay;
     private double insurancePricePerDay;
     private boolean available;
 
-
+    // constructor
     public Vehicle(String regNumber, String brand, double basePricePerDay, double insurancePricePerDay, boolean available) {
 
         // Checks that the registration number, brand, daily price and insurance price are valid before creating the vehicle.
@@ -33,17 +33,17 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
         this.insurancePricePerDay = insurancePricePerDay;
         this.available = available;
     }
-
+    //Checks if the given regNumber is formated correctly
     public static boolean isValidRegNumber(String regNumber) {
         if (regNumber == null) {
             return false;
         }
         String cleanReg = regNumber.trim().toUpperCase();
 
-        // Kollar om strängen matchar formatet 3 bokstäver + 3 tecken (t.ex. ABC123 eller ABC12A)
+        // Checks if the string matches the format: 3 letters + 3 digits (e.g. ABC123)
         return cleanReg.matches("^[A-Z]{3}[0-9]{3}$");
     }
-
+    //Checks if the given brand is formated correctly
     public static boolean isValidBrand(String brand) {
         if (brand == null) {
             return false;
@@ -86,17 +86,18 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
         }
     }
 
-
+    //Calculation of the rental price.
     public double calculateRentalPrice(int days) {
         return basePricePerDay * days;
 
 
     }
-
+    //calculation of the insurance price.
     public double calculateInsurancePrice(int days){
         return insurancePricePerDay * days;
     }
 
+    //Calculation of the total cost and adds insurance if requested.
     public double calculateTotalCost(int days, boolean includeInsurance) {
         double total = calculateRentalPrice(days);
         if (includeInsurance) {
@@ -106,7 +107,7 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
     }
 
 
-    //Calling the constructor
+    // Prints the description of the vehicles.
     public String describe() {
         return String.format("[%s] | Reg: %-6s | Brand: %-8s | Price/Day: %6.2f € | Insurance: %5.2f € | Status: %s",
                 getClass().getSimpleName().toUpperCase(),
