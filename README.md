@@ -7,25 +7,21 @@ Students: Alexander Zasepa & Emin Almaatooq.
 
 - Name: Vehicle (Abstract)
 - Shared fields: RegNumber, brand, basedPricePerDay, insurancePricePerDay, available
-- Shared methods: describe(), getRegNumber(), getBrand(), getBasePricePerDay(), getInsurancePricePerDay(), isAvailable(), getStatus(), calculateRentalPrice(), calculateTotalCost()
+- Shared methods: describe(), getRegNumber(), getBrand(), getBasePricePerDay(), getInsurancePricePerDay(), isAvailable(), getStatus(), calculateRentalPrice(), calculateTotalCost(), isValidRegNumber(), isValidBrand(), bookVehicle()
 
 ## Subclasses 
 
 1. Car - Has extra field: modelYear, pricePerKm. 
-   Overrides: describe(): Adds model year and kolimeter pricing information
-   calculateInsurancePrice(): Applies a 10% discount on insurance for rental exceeding 7 days
+   Overrides: describe(), calculateInsurancePrice(), calculateRentalPrice()
 
 2. Truck - Has extra field: maxLoadTon. 
-   Overrides: describe(): Adds maximum load capacity details
-   calculateRentalPrice(): Adds a fee of 10€ per ton of load capacity per rental day.
+   Overrides: describe(), calculateRentalPrice()
 
 3. Boat - Has extra field: cleaningPrice, boatLength
-   Overrides: describe(): Adds cleaning fee and boat length details
-   calculateRentalPrice(): adds a one-time mandatory cleaning fee to the base rental cost.
+   Overrides: describe(), calculateRentalPrice(), calculateInsurancePrice()
 
 4. Motorbike - Has extra field: driverLicense. engineCC
-   Overrides: describe(): Adds engine displacement and driver license requirement details.
-   CalculateInsurancePrice(): Applies a 15% risk surcharge on the daily insurance cost
+   Overrides: describe(), CalculateInsurancePrice()
 
 ## Interface
 
@@ -44,7 +40,8 @@ Students: Alexander Zasepa & Emin Almaatooq.
 3. Calculate total cost
 4. Add new vehicle
 5. Remove vehicle
-6. Exit
+6. Book vehicle
+7. Exit
 
 ## Error Handling & Validation Scenarios
 

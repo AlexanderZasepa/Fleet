@@ -54,6 +54,16 @@ public abstract class Vehicle implements Rentable, Insurance {   //Implements re
         return cleanBrand.matches("^[a-zA-Z\\s\\-]+$");
     }
 
+
+    //Method that tries to book vehicle in current state and return true if booking is successful otherwise false (already booked)
+    public boolean bookVehicle() {
+        if (available) {
+            this.available = false;
+            return true;
+        }
+        return false;
+    }
+
     //Getters
     public String getRegNumber() {
         return regNumber;

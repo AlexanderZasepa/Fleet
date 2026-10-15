@@ -25,12 +25,12 @@ public class FleetManager {
         vehicles.add(new Truck("TRK999", "Scania", 99.9, 11.9, 15, true));
         vehicles.add(new Truck("ILN451", "MAN", 132.9, 12.9, 20, true));
         vehicles.add(new Truck("LOD522", "Mercedes", 89.9, 10.9, 10, false));
-        vehicles.add(new Boat("BOAT01", "Buster", 300, 39.9, 30, 8, true));
-        vehicles.add(new Boat("BOAT02", "Yamarin", 350, 39.9, 30, 10, true));
-        vehicles.add(new Boat("BOAT03", "Flipper", 449.99, 44.99, 49.9, 14, true));
-        vehicles.add(new Motorbike("MC777", "Yamaha", 40, 8.4, true, 325, true));
-        vehicles.add(new Motorbike("YK454", "Harley", 62.4, 11.9, true, 883, true));
-        vehicles.add(new Motorbike("AG456", "Kawasaki", 54.9, 8.9, true, 600, true));
+        vehicles.add(new Boat("HAH101", "Buster", 300, 39.9, 30, 8, true));
+        vehicles.add(new Boat("BOA909", "Yamarin", 350, 39.9, 30, 10, true));
+        vehicles.add(new Boat("ALE987", "Flipper", 449.99, 44.99, 49.9, 14, true));
+        vehicles.add(new Motorbike("MCC777", "Yamaha", 40, 8.4, true, 325, true));
+        vehicles.add(new Motorbike("YKY454", "Harley", 62.4, 11.9, true, 883, true));
+        vehicles.add(new Motorbike("AGZ456", "Kawasaki", 54.9, 8.9, true, 600, true));
 
     }
 
@@ -73,5 +73,15 @@ public class FleetManager {
         return false; //Car doesn't exist
     }
 
+
+    //Attempts to book vehicle based on registration number. Returning true if the vehicle is found and book or false if not found or already booked
+    public boolean bookVehicle(String regNumber) {
+        Vehicle vehicle = findVehicleByRegNumber(regNumber);
+
+        if (vehicle == null) {
+            return false;
+        }
+        return vehicle.bookVehicle();
+    }
 
 }

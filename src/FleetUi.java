@@ -15,19 +15,18 @@ public class FleetUi {
             System.out.println("3. Calculate total cost");
             System.out.println("4. Add new vehicle");
             System.out.println("5. Remove vehicle");
-            System.out.println("6. Exit");
+            System.out.println("6. Book vehicle");
+            System.out.println("7. Exit");
 
-            System.out.println("Choose an option: 1-6: ");
+            System.out.println("Choose an option: 1-7: ");
 
-            //Blocks the user from using text as input.
             int choice = 0;
             try {
                 choice = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Enter a number between 1 & 6.");
+                System.out.println("Invalid input. Enter a number between 1 & 7.");
                 continue;
             }
-
 
             // A menu switch with our cases which includes our methods.
             switch (choice) {
@@ -54,12 +53,16 @@ public class FleetUi {
                     break;
 
                 case 6:
+                    bookAnyVehicle(scanner, manager);
+                    break;
+
+                case 7: // Ändrat från 6 till 7
                     System.out.println("\n-----Exiting the system!-----");
                     running = false;
                     break;
 
                 default:
-                    System.out.println("Invalid choice! Please select an option (1-6): ");
+                    System.out.println("Invalid choice! Please select an option (1-7): ");
             }
         }
 
@@ -181,7 +184,7 @@ public class FleetUi {
             return;
         }
 
-            // Create a variable to store the selected vehicle type
+        // Create a variable to store the selected vehicle type
         int type = 0;
 
         while (true) {
@@ -352,17 +355,78 @@ public class FleetUi {
 
             }
 
-        //catch errors if the input format is wrong
+            //catch errors if the input format is wrong
         } catch (NumberFormatException e) {
             System.out.println("Input error: Please enter valid registration number!");
 
-        //catch errors when rules or validation fails.
+            //catch errors when rules or validation fails.
         } catch (IllegalArgumentException e) {
             System.out.println("Validation error: " + e.getMessage());
 
         }
+
+
     }
 
+    // A method to handle booking a vehicle via its registration number
+    private static void bookAnyVehicle(Scanner scanner, FleetManager manager) {
+        System.out.println("\n====================== BOOK VEHICLE ======================");
+        System.out.print("Enter registration number to book (e.g. ABC123): ");
+
+        String regNumber = scanner.nextLine().trim().toUpperCase();
+
+        if (regNumber.isEmpty()) {
+            System.out.println("Invalid input. Registration number cannot be empty.");
+            return;
+        }
+
+        // Validate the format just like in other places
+        if (!Vehicle.isValidRegNumber(regNumber)) {
+            System.out.println("Invalid registration format! Must be 3 letters followed by 3 digits.");
+            return;
+        }
+
+        // Check if the vehicle exists
+        Vehicle vehicle = manager.findVehicleByRegNumber(regNumber);
+        if (vehicle == null) {
+            System.out.println("Error: No vehicle found with registration number " + regNumber + ".");
+            return;
+        }
+
+        // Check if the vehicle is already booked before asking for confirmation
+        if (!vehicle.isAvailable()) {
+            System.out.println("Error: Vehicle " + regNumber + " is already rented/booked!");
+            return;
+        }
+
+        // Ask for confirmation before proceeding with the booking
+        boolean confirmBooking = false;
+        while (true) {
+            System.out.print("Are you sure you want to book this vehicle (" + vehicle.getBrand() + " - " + regNumber + ")? Yes/No: ");
+            String confirmation = scanner.nextLine().trim().toLowerCase();
+
+            if (confirmation.equals("yes")) {
+                confirmBooking = true;
+                break;
+            } else if (confirmation.equals("no")) {
+                System.out.println("Booking cancelled.");
+                return;
+            } else {
+                System.out.println("Invalid input! Please enter: Yes or No.");
+            }
+        }
+
+        // If confirmed, try to book the vehicle
+        if (confirmBooking) {
+            boolean success = manager.bookVehicle(regNumber);
+            if (success) {
+                System.out.println("Success! Vehicle " + regNumber + " (" + vehicle.getBrand() + ") has been successfully booked.");
+            } else {
+                System.out.println("Error: Vehicle could not be booked.");
+            }
+        }
+    }
 
 }
+
 
