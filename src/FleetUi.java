@@ -352,9 +352,11 @@ public class FleetUi {
 
             }
 
-
+        //catch errors if the input format is wrong
         } catch (NumberFormatException e) {
             System.out.println("Input error: Please enter valid registration number!");
+
+        //catch errors when rules or validation fails.
         } catch (IllegalArgumentException e) {
             System.out.println("Validation error: " + e.getMessage());
 
